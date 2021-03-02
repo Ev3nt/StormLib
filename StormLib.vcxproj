@@ -77,6 +77,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)\Build\bin\$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(SolutionDir)\Build\obj\$(Configuration)\$(Platform)\</IntDir>
+    <TargetName>Storm</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
