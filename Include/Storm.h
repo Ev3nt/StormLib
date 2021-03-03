@@ -54,7 +54,7 @@ extern "C"
 	BOOL   CALLBACK SNetSetBasePlayer(int a1);
 	BOOL   CALLBACK SNetSetGameMode(int a1);
 	int    CALLBACK SNetUnregisterEventHandler(int a1, int callback);
-	
+
 	BOOL CALLBACK SNetEnumGamesEx(int a1, int a2, int(__fastcall* callback)(DWORD*, DWORD*, DWORD*), int* hintnextcall);
 	int	 CALLBACK SNetSendServerChatCommand(char* command);
 	BOOL CALLBACK SNet135(signed int a1, int a2, int a3);
@@ -69,7 +69,7 @@ extern "C"
 	BOOL CALLBACK SNet144(int a1);
 	int	 CALLBACK SNetLeagueLogout(char* bnetName);
 	int	 CALLBACK SNet146(int* curPlayerID, size_t nameSize);
-	
+
 	BOOL	CALLBACK SDlgInit();
 	HDC     CALLBACK SDlgBeginPaint(HWND window, LPPAINTSTRUCT ps);
 	int     CALLBACK SDlgBltToWindowI(HWND window, HRGN hrgnSrc2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10);
@@ -95,7 +95,7 @@ extern "C"
 	int     CALLBACK SDlgSetBitmapE(int a1, int a2, char* src, int a4, int a5, int a6, int a7, signed int a8, int a9, signed int a10);
 	char* CALLBACK SDlgSetLocale(int a1, const char* a2);
 	int     CALLBACK Ordinal224(int a1);
-	
+
 	BOOL	CALLBACK SFileInit();
 	int     CALLBACK SFileAuthenticateArchive(HANDLE hArchive, int a2);
 	BOOL    CALLBACK SFileCloseArchive(HANDLE hArchive);
@@ -125,26 +125,26 @@ extern "C"
 	BOOL    CALLBACK SFileGetFileName(HANDLE hFile, const char* buffer, int length);
 	int     CALLBACK SFileGetArchiveInfo(int a1, int a2, int a3);
 	char    CALLBACK SFileSetPlatform(char a1);
-	int     CALLBACK SFileLoadFile(const char* filename, int a2, int a3, int a4, int a5);
+	int     CALLBACK SFileLoadFile(LPCSTR lpFileName, LPVOID lpBuffer, size_t* pSize, size_t extraSizeToAlocate, LPOVERLAPPED lpOverlapped);
 	BOOL    CALLBACK SFileUnloadFile(void* buffer);
-	BOOL    CALLBACK SFileLoadFileEx(void* hArchive, const char* filename, int a3, int a4, int a5, DWORD searchScope, struct _OVERLAPPED* lpOverlapped);
+	BOOL    CALLBACK SFileLoadFileEx(HANDLE hArchive, const char* filename, LPVOID lpBuffer, size_t* pSize, size_t extraSizeToAlocate, DWORD searchScope, struct _OVERLAPPED* lpOverlapped);
 	void    CALLBACK SFilePrioritizeRequest(int a1, int a2);
 	void    CALLBACK SFileCancelRequest(int a1);
 	int     CALLBACK SFileSetAsyncBudget(int a1);
 	void    CALLBACK SFileSetDataChunkSize(int a1);
-	BOOL	CALLBACK SFileOpenFileAsArchive(int a1, const char* archivename, DWORD dwPriority, DWORD dwFlags, HANDLE* handle);
+	BOOL	CALLBACK SFileOpenFileAsArchive(DWORD a0, LPCSTR lpArchiveName, DWORD dwPriority, DWORD dwFlags, HANDLE* hMpq);
 	LCID    __cdecl   SFileGetLocale();
 	BOOL    __cdecl   StormDestroy();
 	HMODULE __cdecl   StormGetInstance();
 	BOOL    CALLBACK StormGetOption(int type, int optval, size_t optlen);
 	BOOL    CALLBACK StormSetOption(int type, int optval, size_t optlen);
-	
+
 	BOOL CALLBACK SBltDestroy();
 	BOOL CALLBACK SBltGetSCode(unsigned int a1, char* buffer, size_t buffersize, int a4);
 	BOOL CALLBACK SBltROP3(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);
 	BOOL CALLBACK SBltROP3Clipped(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10);
 	BOOL CALLBACK SBltROP3Tiled(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10);
-	
+
 	BOOL   CALLBACK SBmpInit();
 	BOOL   CALLBACK SBmpDecodeImage(int a1, signed int* a2, unsigned int a3, int a4, int a5, int a6, int a7, int a8, int a9);
 	BOOL   CALLBACK SBmpDestroy();
@@ -152,14 +152,14 @@ extern "C"
 	BOOL   CALLBACK SBmpSaveImage(const char* fileName, unsigned __int16 width, unsigned __int16 height, int paletteentries, int bitdepth, int bitmapbits);
 	HANDLE CALLBACK SBmpAllocLoadImage(const char* fileName, int a2, int a3, int a4, int a5, int a6, int a7, int(CALLBACK* a8)(DWORD*));
 	BOOL   CALLBACK SBmpSaveImageEx(const char* filename, unsigned __int16 width, unsigned __int16 height, int paletteentries, int bitdepth, int bitmapbits, int reserved);
-	
+
 	BOOL CALLBACK SCodeInit();
 	BOOL CALLBACK SCodeCompile(char* directives1, char* directives2, int a3, unsigned int a4, unsigned int flags, char* src);
 	BOOL CALLBACK SCodeDelete(int handle);
 	BOOL CALLBACK SCodeDestroy();
 	int  __cdecl   SCodeExecute(int a1, int a2);
 	BOOL CALLBACK SCodeGetPseudocode(int scodestring, int buffer, size_t buffersize);
-	
+
 	BOOL CALLBACK SDrawInit();
 	BOOL CALLBACK SDrawAutoInitialize(HINSTANCE hWnd, LPCSTR lpClassName, LPCSTR lpWindowName, int(CALLBACK* a4)(HWND, UINT, WPARAM, LPARAM), signed int a5, int nWidth, int nHeight, int a8);
 	BOOL CALLBACK SDrawCaptureScreen(char* source);
@@ -180,7 +180,7 @@ extern "C"
 	BOOL CALLBACK SDrawUpdatePalette(unsigned int firstentry, unsigned int numentries, PALETTEENTRY* pPalEntries, int a4);
 	BOOL CALLBACK SDrawUpdateScreen(int a1);
 	int  __cdecl   SDrawWaitForVerticalBlank();
-	
+
 	BOOL CALLBACK SEvtDispatch(DWORD messageID, int a2, int a3, int a4);
 	BOOL CALLBACK SEvtRegisterHandler(DWORD messageID, unsigned int a2, int event, int a4, int a5);
 	BOOL CALLBACK SEvtUnregisterHandler(DWORD messageID, int a2, int a3, int a4);
@@ -188,7 +188,7 @@ extern "C"
 	BOOL CALLBACK SEvtPopState(DWORD messageID, int type);
 	BOOL CALLBACK SEvtPushState(DWORD messageID, int type);
 	BOOL CALLBACK SEvtBreakHandlerChain(int a1);
-	
+
 	BOOL CALLBACK SGdiInit();
 	BOOL CALLBACK SGdiBitBlt(int a1, int a2, int a3, int a4, unsigned int a5, int a6, int a7, unsigned int a8, signed int a9);
 	BOOL CALLBACK SGdiCreateFont(const void* handle, int bits, int width, int height, int filecharwidth, int filecharheight, const void* charsizetable, int a8);
@@ -203,14 +203,14 @@ extern "C"
 	BOOL CALLBACK SGdiTextOut(int a1, int a2, int a3, unsigned int a8, const char* arg1C, unsigned int arg20);
 	BOOL CALLBACK SGdi392(int, int, int, int);
 	BOOL CALLBACK Ordinal393(int, int, int);
-	
+
 	BOOL  CALLBACK SMemInit();
 	void* CALLBACK SMemAlloc(int amount, char* logfilename, int logline, int defaultValue);
 	BOOL  __cdecl   SMemDestroy();
 	BOOL  CALLBACK SMemFree(void* location, char* logfilename, int logline, int defaultValue);
 	int   CALLBACK SMemGetSize(void* location, char* logfilename, int logline);
 	void* CALLBACK SMemReAlloc(void* location, int amount, char* logfilename, int logline, int defaultValue);
-	
+
 	BOOL   CALLBACK SMsgDispatchMessage(HWND hWnd, DWORD messageID, WPARAM wParam, LPARAM lParam, int a5, int a6);
 	WPARAM CALLBACK SMsgDoMessageLoop(void* callback, int followWithStormDestroy);
 	BOOL   CALLBACK SMsgRegisterCommand(int a1, int a2, int a3);
@@ -246,7 +246,7 @@ extern "C"
 	BOOL   CALLBACK STransCreateE(int, int, int, int, int, int, int);
 	BOOL   CALLBACK STrans446(int, int, int, int, int, int, int);
 	BOOL   CALLBACK STransLoadE(char* filename, int, int, int handle);
-	
+
 	BOOL  CALLBACK SVidInit();
 	BOOL  __cdecl   SVidDestroy();
 	BOOL  CALLBACK SVidGetSize(int video, int a2, int a3, int a4);
@@ -268,7 +268,7 @@ extern "C"
 	BOOL  CALLBACK SErrSuppressErrors(BOOL suppressErrors);
 	int   CALLBACK SErrRegisterHandler(int);
 	void  CALLBACK SErr470(int);
-	
+
 	BOOL CALLBACK SCmdGetBool(int a1);
 	int  CALLBACK SCmdGetNum(int a1);
 	BOOL CALLBACK SCmdGetString(int a1, char* dest, size_t size);
@@ -295,7 +295,7 @@ extern "C"
 	int  CALLBACK SMemCmp(void* location1, void* location2, size_t size);
 	int  CALLBACK SMem496(int, char);
 	BOOL CALLBACK SMemDumpState(int, int);
-	
+
 	BOOL  CALLBACK SStrInit();
 	int   CALLBACK SStrCopy(char* dest, const char* source, size_t size);
 	DWORD CALLBACK SStrHash(const char* string, unsigned long flags, unsigned long Seed);
@@ -316,13 +316,13 @@ extern "C"
 	BOOL  CALLBACK SMsgSetDefaultWindow(int a1);
 	HWND  __cdecl   SMsgGetDefaultWindow();
 	BOOL  CALLBACK SMsg519(int a1, int a2, int a3);
-	
+
 	int CALLBACK Ordinal521(int a1);
-	
+
 	void CALLBACK SRgn523(int handle, int a2, int a3, int a4);
 	void CALLBACK SRgn524(int handle, int a2);
 	void CALLBACK SRgn525(int handle);
-	
+
 	void   CALLBACK SRgn527(int handle, int a2, int a3);
 	void   CALLBACK SRgn528i(int handle, int a2, int a3, int a4);
 	void   CALLBACK SRgn529i(int handle, int a2, int a3);
@@ -350,7 +350,7 @@ extern "C"
 	BOOL   CALLBACK SCompCompress(void* a1, int a2, unsigned int a3, signed int amount, int a5, char a6, int a7);
 	BOOL   CALLBACK SCompDecompress(void* a1, int* a2, const void* a3, unsigned int a4);
 	void   __cdecl   SLogVWrite(HANDLE handle, char* format, ...);
-	
+
 	void                         __cdecl   SErr561(char*, char);
 	int                          __cdecl   SErrDisplayErrorFmt(DWORD dwMessageId, char* logfile, int logline, int unk, UINT uExitCode, char* format, ...);
 	int                          __cdecl   SErrIsDisplayingError();
@@ -358,7 +358,7 @@ extern "C"
 	int                          CALLBACK SErrSetLogTitleString(int a1);
 	int                          CALLBACK SErrDisplayAppFatal(int a1);
 	LPTOP_LEVEL_EXCEPTION_FILTER __cdecl   SErrCatchUnhandledExceptions();
-	
+
 	char* CALLBACK SStrChr(const char* string, char c);
 	char* CALLBACK SStrChrR(const char* string, char c);
 	double       CALLBACK SStrToDouble(const char* string);
@@ -375,7 +375,7 @@ extern "C"
 	int          CALLBACK SStrStrI(const char* string, const char* search);
 	int          CALLBACK SStrStr(const char* string, const char* search);
 	int          CALLBACK SNet588(char* a1, char* a2);
-	
+
 	BOOL CALLBACK SBigInit();
 	int  CALLBACK SBigAdd(void* buffer, const void* buffer2, const void* buffer3);
 	int  CALLBACK SBigAnd(void* buffer, const void* buffer2, const void* buffer3);
@@ -430,7 +430,7 @@ extern "C"
 	BOOL CALLBACK SSignatureVerifyStream_Finish(int);
 	BOOL CALLBACK SSignatureGenerate(int, int, int, int, int, int);
 	BOOL CALLBACK SSignatureVerifyStream_GetSignatureLength();
-	
+
 	BOOL CALLBACK SUniInit();
 	int  CALLBACK SUniConvertUTF16to8Len(int a1, int a2, int a3);
 	int  CALLBACK SUniConvertUTF16to8(int a1, int a2, int a3, int a4, int a5, int a6);

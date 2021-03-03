@@ -501,7 +501,7 @@ char CALLBACK SFileSetPlatform(char a1)
 	return 0;
 }
 
-int CALLBACK SFileLoadFile(const char* filename, int a2, int a3, int a4, int a5)
+int CALLBACK SFileLoadFile(LPCSTR lpFileName, LPVOID lpBuffer, size_t* pSize, size_t extraSizeToAlocate, LPOVERLAPPED lpOverlapped)
 {
 	return 0;
 }
@@ -511,7 +511,7 @@ BOOL CALLBACK SFileUnloadFile(void* buffer)
 	return 0;
 }
 
-BOOL CALLBACK SFileLoadFileEx(void* hArchive, const char* filename, int a3, int a4, int a5, DWORD searchScope, struct _OVERLAPPED* lpOverlapped)
+BOOL CALLBACK SFileLoadFileEx(HANDLE hArchive, const char* filename, LPVOID lpBuffer, size_t* pSize, size_t extraSizeToAlocate, DWORD searchScope, struct _OVERLAPPED* lpOverlapped)
 {
 	return 0;
 }
@@ -536,7 +536,7 @@ void CALLBACK SFileSetDataChunkSize(int a1)
 	
 }
 
-BOOL CALLBACK SFileOpenFileAsArchive(int a1, const char* archivename, DWORD dwPriority, DWORD dwFlags, HANDLE* handle)
+BOOL CALLBACK SFileOpenFileAsArchive(DWORD a0, LPCSTR lpArchiveName, DWORD dwPriority, DWORD dwFlags, HANDLE* hMpq)
 {
 	return 0;
 }
